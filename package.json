@@ -1,0 +1,9 @@
+{
+  "name": "react-high-tea",
+  "version": "1.0.0",
+  "description": "React app for rating high teas",
+  "main": "index.js",
+  "repository": {},
+  "author": "TracyMu",
+  "license": "MIT"
+}
