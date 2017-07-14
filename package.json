@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": {},
   "author": "TracyMu",
-  "license": "MIT"
+  "license": "MIT",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]  
 }
