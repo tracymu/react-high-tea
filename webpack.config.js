@@ -6,14 +6,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: "/src/",
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [ "env" ]
-          }
-        }
+        test: /\.js$/, 
+        loader: 'babel-loader', 
+        exclude: /node_modules/ 
       }
     ]
   }
