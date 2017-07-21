@@ -4,9 +4,22 @@ import ReactDOM from 'react-dom';
 function Body(props) {
   return (
     <table>
+      <TableTitle />
       <TableEntries teas={props.teas} />
     </table>
   );
+}
+
+function TableTitle(props) {
+  return (
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+  )
 }
 
 function TableEntries(props) {
@@ -25,7 +38,6 @@ function Entry(props) {
   return (
     <tr>
       <td>{props.tea.name}</td>
-      <td>{props.tea.location}</td>
       <td>{props.tea.date}</td>
       <td>{props.tea.score}</td>
     </tr>
