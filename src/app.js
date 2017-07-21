@@ -1,46 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Container, Table } from 'semantic-ui-react'
 
 function Body(props) {
   return (
-    <table>
-      <TableTitle />
-      <TableEntries teas={props.teas} />
-    </table>
+    <Container>
+      <Table celled>
+        <TableTitle />
+        <TableEntries teas={props.teas} />
+      </Table>
+    </Container>
   );
 }
 
 function TableTitle(props) {
   return (
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Score</th>
-      </tr>
-    </thead>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell>Name</Table.HeaderCell>
+        <Table.HeaderCell>Date</Table.HeaderCell>
+        <Table.HeaderCell>Score</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
   )
 }
 
 function TableEntries(props) {
   return (
-    <tbody>
+    <Table.Body>
       { props.teas.map(tea =>
         <Entry tea={tea} key={tea.id} />,
       )
     }
-    </tbody>
+    </Table.Body>
   );
 }
 
 
 function Entry(props) {
   return (
-    <tr>
-      <td>{props.tea.name}</td>
-      <td>{props.tea.date}</td>
-      <td>{props.tea.score}</td>
-    </tr>
+    <Table.Row>
+      <Table.Cell>{props.tea.name}</Table.Cell>
+      <Table.Cell>{props.tea.date}</Table.Cell>
+      <Table.Cell>{props.tea.score}</Table.Cell>
+    </Table.Row>
   );
 }
 
