@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Container, Table } from 'semantic-ui-react'
+import { Container, Header, Table } from 'semantic-ui-react'
 
 function Body(props) {
   return (
     <Container>
+      <Header size='huge'>High Teas Around The World</Header>
       <Table celled>
         <TableTitle />
         <TableEntries teas={props.teas} />
@@ -38,10 +39,12 @@ function TableEntries(props) {
 
 
 function Entry(props) {
+  const date = (new Date(props.tea.date)).toDateString();
+
   return (
     <Table.Row>
       <Table.Cell>{props.tea.name}</Table.Cell>
-      <Table.Cell>{props.tea.date}</Table.Cell>
+      <Table.Cell>{date}</Table.Cell>
       <Table.Cell>{props.tea.score}</Table.Cell>
     </Table.Row>
   );
