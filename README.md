@@ -5,3 +5,5 @@ I am still using this app to record high teas, and decided to give it a facelift
 Run locally with 
 `webpack-dev-server ./src/app.js --hot --inline`
 
+Run the linter from the root directory with
+`./node_modules/.bin/eslint src/app.js`

@@ -29,6 +29,7 @@
     "start": "webpack-dev-server --open"
   },
   "dependencies": {
+    "eslint-config-airbnb": "^15.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
