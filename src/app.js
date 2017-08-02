@@ -28,7 +28,7 @@ class Entry extends React.Component {
             <Button color='pink' onClick={this.close}>
               Close
             </Button>
-            <Button positive labelPosition='right' onClick={this.close}>
+            <Button color='purple' onClick={this.close}>
               Maybe Edit
             </Button>
           </Modal.Actions>
@@ -42,7 +42,7 @@ function Body(props) {
   return (
     <Container>
       <Header size='huge'>High Teas Around The World</Header>
-      <Table celled>
+      <Table celled selectable>
         <TableTitle />
         <TableEntries teas={props.teas} />
       </Table>
