@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Container, Header, Image, Modal, Popup, Table } from 'semantic-ui-react'
+import { Button, Container, Header, Image, Modal, Popup, Statistic, Table } from 'semantic-ui-react'
+
+function ScoreBreakdown(props) {
+  const attrs = ['tea', 'service', 'ambience', 'savoury', 'scones', 'sweets', 'bonus']
+  return(
+    <Statistic.Group>
+      { attrs.map((attr, index) =>
+        <ScoreRow score={props.tea[attr]} name={attr} key={index} />,
+      )}
+    </Statistic.Group>
+  );
+}
+
+function ScoreRow(props) {
+  return (
+    <Statistic color='yellow' value={props.score} label={props.name} />
+  )
+}
 
 class Entry extends React.Component {
   state = { open: false };
@@ -12,16 +29,22 @@ class Entry extends React.Component {
     const date = (new Date(this.props.tea.date)).toDateString();
     
     return (
-      <Table.Row>
-        <Table.Cell onClick={this.show('inverted')}>{this.props.tea.name}</Table.Cell>
+      <Table.Row onClick={this.show('inverted')}>
+        <Table.Cell>{this.props.tea.name}</Table.Cell>
         <Table.Cell>{date}</Table.Cell>
         <Table.Cell>{this.props.tea.score}</Table.Cell>
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
-          <Modal.Header>Inherit the name here</Modal.Header>
+          <Modal.Header>{this.props.tea.name}</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>Is this another little Header</Header>
-              <p>Put whatever in here</p>
+              <p><strong>Location: </strong>{this.props.tea.location}</p>
+              <p><strong>Date: </strong>{this.props.tea.date}</p>
+              <p><strong>Price: </strong>{this.props.tea.price}</p>
+              <p><strong>Score out of 32: </strong>{this.props.tea.score}</p>
+              <h4>Score breakdown (each out of 5)</h4>
+              <ScoreBreakdown tea={this.props.tea} />
+              <h4>Notes</h4>
+              <p>{this.props.tea.notes}</p>
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
@@ -79,18 +102,48 @@ const teas = [
     name: 'Mandarin Oriental',
     date: '2017,06,21',
     score: '31.5',
+    tea: '4',
+    service: '5',
+    ambience: '2',
+    savoury: '5',
+    scones: '3',
+    sweets: '2.5',
+    bonus: 1,
+    price: '$50',
+    notes: 'This was not a shit show',
+    location: 'Bangkok'
   },
   {
     id: '2',
     name: 'Burj al Arab',
     date: '2013,10,1',
     score: '30',
+    tea: '4',
+    service: '5',
+    ambience: '2',
+    savoury: '5',
+    scones: '3',
+    sweets: '2.5',
+    bonus: 1,
+    price: '$50',
+    notes: 'This was not a shit show',
+    location: 'Dubai'
   },
   {
     id: '3',
     name: 'Hydro Majestic',
     date: '2014,04,15',
     score: '10',
+    tea: '4',
+    service: '5',
+    ambience: '2',
+    savoury: '5',
+    scones: '3',
+    sweets: '2.5',
+    bonus: 1,
+    price: '$50',
+    notes: 'This was not a shit show',
+    location: 'Blue Mountains'
   },
 ];
 
