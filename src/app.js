@@ -1,6 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Container, Header, Table } from 'semantic-ui-react'
+import { Button, Container, Header, Image, Modal, Popup, Table } from 'semantic-ui-react'
+
+class Entry extends React.Component {
+  state = { open: false };
+  show = (dimmer) => () => this.setState({ dimmer, open: true })
+  close = () => this.setState({ open: false })
+
+  render() {
+    const { open, dimmer } = this.state
+    const date = (new Date(this.props.tea.date)).toDateString();
+    
+    return (
+      <Table.Row>
+        <Table.Cell onClick={this.show('inverted')}>{this.props.tea.name}</Table.Cell>
+        <Table.Cell>{date}</Table.Cell>
+        <Table.Cell>{this.props.tea.score}</Table.Cell>
+        <Modal dimmer={dimmer} open={open} onClose={this.close}>
+          <Modal.Header>Inherit the name here</Modal.Header>
+          <Modal.Content>
+            <Modal.Description>
+              <Header>Is this another little Header</Header>
+              <p>Put whatever in here</p>
+            </Modal.Description>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button color='pink' onClick={this.close}>
+              Close
+            </Button>
+            <Button positive labelPosition='right' onClick={this.close}>
+              Maybe Edit
+            </Button>
+          </Modal.Actions>
+        </Modal>        
+      </Table.Row>
+    )
+  }
+}
 
 function Body(props) {
   return (
@@ -36,20 +72,6 @@ function TableEntries(props) {
     </Table.Body>
   );
 }
-
-
-function Entry(props) {
-  const date = (new Date(props.tea.date)).toDateString();
-
-  return (
-    <Table.Row>
-      <Table.Cell>{props.tea.name}</Table.Cell>
-      <Table.Cell>{date}</Table.Cell>
-      <Table.Cell>{props.tea.score}</Table.Cell>
-    </Table.Row>
-  );
-}
-
 
 const teas = [
   {
